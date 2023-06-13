@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HammingWeightController {
 
+    String letzteEingabe;
+
     @RequestMapping("/api/hamming")
     public int calculateHammingWeight(@RequestParam String number) {
-        String letzteEingabe = number; //speichert den String (wird für die nächste User-Story gebraucht)
+        letzteEingabe = number; //speichert den String (wird für die nächste User-Story gebraucht)
 
         int HammingWeight = 0;
 
@@ -20,6 +22,11 @@ public class HammingWeightController {
         }
 
         return HammingWeight;
+    }
+
+    @RequestMapping("/api/hamming/previous")
+    public String previousString () {
+        return letzteEingabe;
     }
 }
 
